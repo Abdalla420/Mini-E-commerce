@@ -1,63 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini E-commerce</title>
-    <link rel="stylesheet" href="./style.css">
-    <script type="module" src="./script.js" defer></script>
-</head>
-<body>
-    <header>
-        <div id="container">
-            <p id="title">My store</p>
-            <form action="#" method="get" id="myForm">
-                <div id="upper-part">
-                    <div id="search">
-                        <label for="text-box"></label>
-                            <input type="text" name="text-box"id="text-box" placeholder="Search for products...">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mini E-commerce</title>
+        <link rel="stylesheet" href="./style.css">
+        <script type="module" src="./script.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <div id="container">
+                <p id="title">My Store</p>
+                <form action="#" method="get" id="myForm">
+                    <div id="upper-part">
+                        <div id="search">
+                            <label for="text-box"></label>
+                                <input type="text" name="text-box"id="text-box" placeholder="Search for products...">
+                            </label>
+                        </div>
+                        <div id="category">
+                            <label for="category"></label>
+                            <select name="category" id="category">
+                                <option value="all-categories">All Categories</option>
+                                <option value="men">Men's Clothing</option>
+                                <option value="women">Women's Clothing</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="jewelery">Jewelery</option>
+                            </select>
+                        </div>
+                        <div id="min-price">
+                            <label for="min-price"></label>
+                            <input type="number" name="min-price" id="min-price" placeholder="Min Price">
+                        </div>
+                        <div id="max-price">
+                            <label for="max-price"></label>
+                            <input type="number" name="max-price" id="max-price" placeholder="Max Price">
+                        </div>
+                        <div id="filter-button">
+                            <button type="submit">Apply Filters</button>
+                        </div>
+                    </div>
+                    <div id="sort">
+                        <label for="sort">
+                            <select name="sort" id="sort">
+                                <option value="sort-price">Sort by Price</option>
+                                <option value="sort-name">Sort by Name</option>
+                                <option value="sort-rating">Sort by Ratings</option>
+                            </select>
                         </label>
                     </div>
-                    <div id="category">
-                        <label for="category"></label>
-                        <select name="category" id="category">
-                            <option value="all-categories">All Categories</option>
-                            <option value="men">Men's Clothing</option>
-                            <option value="women">Women's Clothing</option>
-                            <option value="electronics">Electronics</option>
-                            <option value="jewelery">Jewelery</option>
-                        </select>
-                    </div>
-                    <div id="min-price">
-                        <label for="min-price"></label>
-                        <input type="number" name="min-price" id="min-price" placeholder="Min Price">
-                    </div>
-                    <div id="max-price">
-                        <label for="max-price"></label>
-                        <input type="number" name="max-price" id="max-price" placeholder="Max Price">
-                    </div>
-                    <div id="filter-button">
-                        <button type="submit">Apply Filters</button>
-                    </div>
+                </form>
+                <div id="shooping">
+                    <p>Shooping Cart</p>
+                    <ul></ul>
+                    <p>Total Quantity: <span id="total-quantity"></span></p>
+                    <p>Total Price: $<span id="total-price"></span></p>
                 </div>
-                <div id="sort">
-                    <label for="sort">
-                        <select name="sort" id="sort">
-                            <option value="sort-price">Sort by Price</option>
-                            <option value="sort-name">Sort by Name</option>
-                            <option value="sort-rating">Sort by Ratings</option>
-                        </select>
-                    </label>
-                </div>
-            </form>
-            <div id="shooping">
-                <p>Shooping Cart</p>
-                <ul></ul>
-                <p>Total Quantity: <span id="total-quantity"></span></p>
-                <p>Total Price: $<span id="total-price"></span></p>
             </div>
-        </div>
-    </header>
-    <footer></footer>
-</body>
-</html>
+        </header>
+        <footer></footer>
+    </body>
+    </html>
