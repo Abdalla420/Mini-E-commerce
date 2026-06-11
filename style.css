@@ -1,12 +1,26 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
 #container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #4E525B;
+}
+#header {
+    background-color: #4E525B;
 }
 #title {
     font-size: 3rem;
     margin: 20px;
+    color: white;
 }
 #myForm {
     display: flex;
@@ -20,4 +34,5 @@
 }
 #shooping {
     width: 30vw;
+    color: white;
 }
