@@ -38,3 +38,7 @@ html, body {
     color: white;
     margin: 20px 0px 20px;
 }
+#gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
