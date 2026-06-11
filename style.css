@@ -13,6 +13,7 @@ html, body {
     justify-content: center;
     align-items: center;
     background-color: #4E525B;
+    box-shadow: 1px 1px 5px 1px grey;
 }
 #header {
     background-color: #4E525B;
