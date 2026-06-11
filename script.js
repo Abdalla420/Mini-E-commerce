@@ -7,15 +7,18 @@ async function getProducts(){
         console.log("error");
     }
 }
-function renderProdcuts(){
+function renderProdcuts(data){
     const parentContainer = document.createElement("div");
     parentContainer.id = "parentContainer";
+    // to assign id to container
+    parentContainer.dataset.id = data.id;
 
     const childContainer = document.createElement("div");
     childContainer.id = "childContainer";
 
     const image = document.createElement("img");
     image.id = "image";
+    image.src = data.image;
 
     const productName = document.createElement("p");
     productName.id = "productName";
