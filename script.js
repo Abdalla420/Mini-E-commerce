@@ -33,9 +33,11 @@ function renderProducts(data){
 
     const detailsBtn = document.createElement("button");
     detailsBtn.id = "detailsBtn";
+    detailsBtn.textContent = "View Details";
 
     const addToBtn = document.createElement("button");
     addToBtn.id = "addToBtn";
+    addToBtn.textContent = "Add to Cart";
 
     const gridContainer = document.querySelector("#gridContainer");
 
