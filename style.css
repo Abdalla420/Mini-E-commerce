@@ -42,3 +42,29 @@ html, body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
+#parentContainer {
+    /* width: 30px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#childContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.buttonContainer {
+    display: flex;
+    gap: 20px;
+    height: 50px;
+    align-items: center;
+}
+#addToBtn, #detailsBtn {
+    padding: 10px 20px;
+    background-color: #0D6EDE;
+    border: none;
+    border-radius: 10px;
+    flex-grow: 0;
+    color: white;
+    font-weight: bold;
+}
