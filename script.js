@@ -1,8 +1,7 @@
 async function getProducts(){
     try {
         const response = await fetch("https://fakestoreapi.com/products");
-        const data = await response.json();
-        console.log(data);
+        return await response.json();
     }catch (error) {
         console.log("error");
     }
@@ -22,9 +21,11 @@ function renderProdcuts(data){
 
     const productName = document.createElement("p");
     productName.id = "productName";
+    productName.textContent = data.title;
 
     const productPrice = document.createElement("p");
     productPrice.id = "productPrice";
+    productPrice.textContent = data.price;
 
     const buttonContainer = document.createElement("div");
     buttonContainer.id = "buttonContainer";
@@ -44,8 +45,11 @@ function renderProdcuts(data){
     gridContainer.append(parentContainer);
 
 }
-function displayProducts(){
-
+async function displayProducts(){
+    const data = await getProducts();
+    for (const product of data){
+        renderProdcuts(product);
+    }
 }
 
-renderProdcuts();
+displayProducts();
