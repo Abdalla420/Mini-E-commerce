@@ -26,7 +26,7 @@ function renderProducts(data){
 
     const productPrice = document.createElement("p");
     productPrice.id = "productPrice";
-    productPrice.textContent = data.price;
+    productPrice.textContent = `$${data.price}`;
 
     const buttonContainer = document.createElement("div");
     buttonContainer.id = "buttonContainer";
