@@ -9,7 +9,8 @@ async function getProducts(){
 function renderProdcuts(data){
     const parentContainer = document.createElement("div");
     parentContainer.id = "parentContainer";
-    // to assign id to container
+    
+    
     parentContainer.dataset.id = data.id;
 
     const childContainer = document.createElement("div");
@@ -36,7 +37,6 @@ function renderProdcuts(data){
     const addToBtn = document.createElement("button");
     addToBtn.id = "addToBtn";
 
-    // select gridContainer
     const gridContainer = document.querySelector("#gridContainer");
 
     buttonContainer.append(detailsBtn, addToBtn);
