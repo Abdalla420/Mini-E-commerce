@@ -6,11 +6,11 @@ async function getProducts(){
         console.log("error");
     }
 }
-function renderProdcuts(data){
+function renderProducts(data){
     const parentContainer = document.createElement("div");
     parentContainer.id = "parentContainer";
     
-    
+
     parentContainer.dataset.id = data.id;
 
     const childContainer = document.createElement("div");
@@ -48,7 +48,7 @@ function renderProdcuts(data){
 async function displayProducts(){
     const data = await getProducts();
     for (const product of data){
-        renderProdcuts(product);
+        renderProducts(product);
     }
 }
 
