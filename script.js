@@ -29,7 +29,7 @@ function renderProducts(data){
     productPrice.textContent = `$${data.price}`;
 
     const buttonContainer = document.createElement("div");
-    buttonContainer.id = "buttonContainer";
+    buttonContainer.className = "buttonContainer";
 
     const detailsBtn = document.createElement("button");
     detailsBtn.id = "detailsBtn";
