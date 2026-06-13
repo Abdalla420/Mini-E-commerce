@@ -53,6 +53,17 @@ html, body {
     flex-direction: column;
     align-items: center;
 }
+#productName, #productPrice {
+    font-size: 1.1rem;
+    margin: 0;
+}
+#productName {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+#productPrice {
+    margin-bottom: 15px;
+}
 .buttonContainer {
     display: flex;
     gap: 20px;
