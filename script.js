@@ -46,6 +46,27 @@ function renderProducts(data){
     parentContainer.append(childContainer);
     gridContainer.append(parentContainer);
 
+    // details dialog 
+    const dialog = document.querySelector("#dialog");
+    const exit = document.querySelector("#exitDet");
+    
+    const imgDet = document.querySelector("#imgDet");
+
+    const descDet = document.querySelector("#descDet");
+    const categoryDet = document.querySelector("#categoryDet");
+    const priceDet = document.querySelector("#priceDet");
+    const ratingDet = document.querySelector("#ratingDet");
+
+    detailsBtn.addEventListener("click", () => {
+        dialog.showModal();
+    })
+
+    exit.addEventListener("click", (e) => {
+        e.preventDefault();
+        dialog.close();
+    })
+
+
 }
 async function displayProducts(){
     const data = await getProducts();
