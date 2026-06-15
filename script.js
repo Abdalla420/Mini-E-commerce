@@ -52,6 +52,8 @@ function renderProducts(data){
     
     const imgDet = document.querySelector("#imgDet");
     
+    const titleDet = document.querySelector("#titleDet");
+
     const descDet = document.querySelector("#descDet");
     
     const categoryDet = document.querySelector("#categoryDet");
@@ -62,6 +64,7 @@ function renderProducts(data){
     
     detailsBtn.addEventListener("click", () => {
         imgDet.src = data.image;
+        titleDet.textContent = data.title;
         descDet.textContent = data.description;
         categoryDet.textContent = `Category: ${data.category}`;
         priceDet.textContent = `Price: $${data.price}`
