@@ -65,7 +65,7 @@ function renderProducts(data){
         descDet.textContent = data.description;
         categoryDet.textContent = `Category: ${data.category}`;
         priceDet.textContent = `Price: $${data.price}`
-        ratingDet.textContent = `Rating: ${data.rating.rate}(${data.rating.count} reviews)`;
+        ratingDet.textContent = `Rating: ${data.rating.rate} (${data.rating.count} reviews)`;
         dialog.showModal();
     })
 
