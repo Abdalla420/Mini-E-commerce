@@ -40,13 +40,19 @@ html, body {
 }
 #gridContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, clamp(300px, 33.33%,600px));
 }
 #parentContainer {
-    /* width: 30px; */
+    width: 500px;
+    height: 550px;
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: center;
+    justify-self: center;
+    margin: 0;
+    flex-grow: 0;
+    background-color: lightgray;
 }
 #childContainer {
     display: flex;
@@ -56,8 +62,9 @@ html, body {
     max-height: 750px;
 }
 #image {
-    max-width: 600px;
-    max-height: 500px;
+    max-width: 350px;
+    max-height: 350px;
+    margin-bottom: 10px;
 }
 #productName, #productPrice {
     font-size: 1.1rem;
