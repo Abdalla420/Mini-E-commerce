@@ -51,21 +51,21 @@ function renderProducts(data){
     const exit = document.querySelector("#exitDet");
     
     const imgDet = document.querySelector("#imgDet");
-    imgDet.src = data.image;
-
+    
     const descDet = document.querySelector("#descDet");
-    descDet.textContent = data.description;
-
+    
     const categoryDet = document.querySelector("#categoryDet");
-    categoryDet.textContent = `Category: ${data.category}`;
-
+    
     const priceDet = document.querySelector("#priceDet");
-    priceDet.textContent = `Price: $${data.price}`
     
     const ratingDet = document.querySelector("#ratingDet");
-    ratingDet.textContent = `Rating: ${data.rating.rate}(${data.rating.count} reviews)`;
-
+    
     detailsBtn.addEventListener("click", () => {
+        imgDet.src = data.image;
+        descDet.textContent = data.description;
+        categoryDet.textContent = `Category: ${data.category}`;
+        priceDet.textContent = `Price: $${data.price}`
+        ratingDet.textContent = `Rating: ${data.rating.rate}(${data.rating.count} reviews)`;
         dialog.showModal();
     })
 
