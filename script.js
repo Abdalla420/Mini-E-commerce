@@ -56,9 +56,8 @@ function renderProducts(data){
         priceDet.textContent = `Price: $${data.price}`
         ratingDet.textContent = `Rating: ${data.rating.rate} (${data.rating.count} reviews)`;
         dialog.showModal();
-    })
-    
-}
+    }) 
+};
 // details dialog 
 const dialog = document.querySelector("#dialog");
 const exit = document.querySelector("#exitDet");
@@ -72,13 +71,13 @@ const ratingDet = document.querySelector("#ratingDet");
 exit.addEventListener("click", (e) => {
     e.preventDefault();
     dialog.close();
-})
+});
 
 async function displayProducts(){
     const data = await getProducts();
     for (const product of data){
         renderProducts(product);
     }
-}
+};
 
 displayProducts();
