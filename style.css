@@ -58,6 +58,7 @@ html, body {
     flex-grow: 0;
     background-color: lightgray;
     border-radius: 15px;
+    box-shadow: 0px 1px 10px 1px grey;
 }
 #childContainer {
     display: flex;
