@@ -81,26 +81,48 @@ function renderProducts(data){
     const cartList = document.querySelector("#cartList");
     
     addToBtn.addEventListener("click", () => {
+        const removeListButton = document.createElement("button");
+        removeListButton.id = `remove-${data.id}`;
+        removeListButton.textContent = "Remove";
         if(cartArray.find(p => p.id === data.id) !== undefined){
             data.quantity += 1;
             const list = document.getElementById(data.id);
-            list.textContent = `${data.title} - $${data.price * data.quantity} x ${data.quantity}`;
+            const lSpan = document.getElementById(`span-${data.id}`);
+            lSpan.textContent = `${data.title} - $${data.price.toFixed(2) * data.quantity} x ${data.quantity}`;
         }else{
             const list = document.createElement("li");
-            const removeListButton = document.createElement("button");
-            removeListButton.textContent = "Remove";
+            const lSpan = document.createElement("span");
             list.id = data.id;
+            lSpan.id = `span-${data.id}`
             data.quantity = 1;
-            list.textContent = `${data.title} - $${data.price} x 1`;
+            lSpan.textContent = `${data.title} - $${data.price.toFixed(2) * data.quantity} x ${data.quantity}`;
             cartArray.push(data);
-            list.append(removeListButton)
+
+            // remove button listener 
+            removeListButton.addEventListener("click", () => {
+                const index = cartArray.findIndex(p => p.id === data.id);
+                data.quantity -= 1;
+                if(data.quantity > 0){
+                    lSpan.textContent = `${data.title} - $${data.price.toFixed(2) * data.quantity} x ${data.quantity}`;
+                }else {
+                    list.remove();
+                }
+                totalQuantity -= 1;
+                totalPrice -= data.price;
+                cartArray.splice(index, 1)
+                totalQuantityP.textContent = `Total Quantity: ${totalQuantity}`;
+                totalPriceP.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+            });
+
+            list.append(lSpan, removeListButton);
             cartList.append(list);
         };
         totalQuantity += 1;
         totalPrice += data.price;
         totalQuantityP.textContent = `Total Quantity: ${totalQuantity}`;
-        totalPriceP.textContent = `Total Price: $${totalPrice}`;
-    });  
+        totalPriceP.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+    });
+    
 };
 
 
