@@ -46,21 +46,7 @@ function renderProducts(data){
     parentContainer.append(childContainer);
     gridContainer.append(parentContainer);
 
-    // details dialog 
-    const dialog = document.querySelector("#dialog");
-    const exit = document.querySelector("#exitDet");
     
-    const imgDet = document.querySelector("#imgDet");
-    
-    const titleDet = document.querySelector("#titleDet");
-
-    const descDet = document.querySelector("#descDet");
-    
-    const categoryDet = document.querySelector("#categoryDet");
-    
-    const priceDet = document.querySelector("#priceDet");
-    
-    const ratingDet = document.querySelector("#ratingDet");
     
     detailsBtn.addEventListener("click", () => {
         imgDet.src = data.image;
@@ -71,14 +57,23 @@ function renderProducts(data){
         ratingDet.textContent = `Rating: ${data.rating.rate} (${data.rating.count} reviews)`;
         dialog.showModal();
     })
-
-    exit.addEventListener("click", (e) => {
-        e.preventDefault();
-        dialog.close();
-    })
-
-
+    
 }
+// details dialog 
+const dialog = document.querySelector("#dialog");
+const exit = document.querySelector("#exitDet");
+const imgDet = document.querySelector("#imgDet");
+const titleDet = document.querySelector("#titleDet");
+const descDet = document.querySelector("#descDet");
+const categoryDet = document.querySelector("#categoryDet");
+const priceDet = document.querySelector("#priceDet");
+const ratingDet = document.querySelector("#ratingDet");
+
+exit.addEventListener("click", (e) => {
+    e.preventDefault();
+    dialog.close();
+})
+
 async function displayProducts(){
     const data = await getProducts();
     for (const product of data){
