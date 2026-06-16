@@ -41,8 +41,10 @@ html, body {
 }
 #gridContainer {
     display: grid;
-    grid-template-columns: repeat(3, clamp(300px, 33.33%,600px));
+    grid-template-columns: repeat(3, clamp(200px, 1fr, 600px));
+    grid-template-columns: 1fr 1fr 1fr;
     row-gap: 10px;
+    width: 100%;
 }
 #parentContainer {
     width: 500px;
