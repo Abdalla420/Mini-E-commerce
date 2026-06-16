@@ -100,9 +100,12 @@ html, body {
 #dialog {
     display: flex;
     flex-direction: column;
-    max-width: 50vw;
-    max-height: 70vh;
+    max-width: 65vw;
+    max-height: 85vh;
 }
 #dialog:not([open]) {
     display: none;
+}
+#imgDet {
+    max-width: 300px
 }
