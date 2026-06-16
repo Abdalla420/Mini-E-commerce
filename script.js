@@ -67,7 +67,30 @@ function renderProducts(data){
         priceDet.textContent = `Price: $${data.price}`
         ratingDet.textContent = `Rating: ${data.rating.rate} (${data.rating.count} reviews)`;
         dialog.showModal();
-    }) 
+    });
+
+    const cartList = document.querySelector("#cartList");
+    const totalQuantity = 0;
+    
+    addToBtn.addEventListener("click", () => {
+        if(cartArray.find(p => p.id === data.id) !== undefined){
+            data.quantity += 1;
+            const list = document.getElementById(data.id);
+            list.textContent = `${data.title} - $${data.price * data.quantity} x ${data.quantity}`;
+        }else{
+            const list = document.createElement("li");
+            list.id = data.id;
+            data.quantity = 1;
+            list.textContent = `${data.title} - $${data.price} x 1`;
+            cartArray.push(data);
+            cartList.append(list);
+        };
+        totalQuantity += 1;
+    });
+
+    // total quantity 
+    const totalQuantitySpan = querySelector("#total-quantity");
+    totalQuantitySpan.textContent = totalQuantity;
 };
 // details dialog 
 const dialog = document.querySelector("#dialog");
