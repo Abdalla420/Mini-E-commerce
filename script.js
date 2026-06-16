@@ -1,3 +1,5 @@
+const myProductsArray = [];
+const cartArray = [];
 async function getProducts(){
     try {
         const response = await fetch("https://fakestoreapi.com/products");
@@ -5,7 +7,16 @@ async function getProducts(){
     }catch (error) {
         console.log("error");
     }
-}
+};
+
+async function addProductsToArray(){
+    const data = await getProducts();
+    for (const product of data){
+        myProductsArray.push(product);
+        renderProducts(product);
+    }
+};
+
 function renderProducts(data){
     const parentContainer = document.createElement("div");
     parentContainer.id = "parentContainer";
@@ -79,5 +90,5 @@ async function displayProducts(){
         renderProducts(product);
     }
 };
-
-displayProducts();
+addProductsToArray();
+// displayProducts();
