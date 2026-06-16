@@ -77,7 +77,7 @@ function renderProducts(data){
         ratingDet.textContent = `Rating: ${data.rating.rate} (${data.rating.count} reviews)`;
         dialog.showModal();
     });
-    
+
     const cartList = document.querySelector("#cartList");
     
     addToBtn.addEventListener("click", () => {
@@ -86,12 +86,16 @@ function renderProducts(data){
             const list = document.getElementById(data.id);
             list.textContent = `${data.title} - $${data.price * data.quantity} x ${data.quantity}`;
         }else{
+            const listDiv = document.createElement("div");
             const list = document.createElement("li");
+            const removeListButton = document.createElement("button");
+            removeListButton.textContent = "Remove";
             list.id = data.id;
             data.quantity = 1;
             list.textContent = `${data.title} - $${data.price} x 1`;
             cartArray.push(data);
-            cartList.append(list);
+            listDiv.append(list, removeListButton)
+            cartList.append(listDiv);
         };
         totalQuantity += 1;
         totalPrice += data.price;
