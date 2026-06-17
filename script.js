@@ -175,17 +175,34 @@ async function update(){
         displayProducts(pageArray[0]);
     };
 };
+// sorting by price, name and ratings
 const sort = document.querySelector("#sort");
 function sortByPrice(array){
     gridContainer.replaceChildren();
     array.sort((b, a) => b.price - a.price);
     pagesContainer.replaceChildren();
     update();
+};
+function sortByName(array){
+    gridContainer.replaceChildren();
+    array.sort((a, b) => a.title.localeCompare(b.title));
+    pagesContainer.replaceChildren();
+    update();
+};
+function sortByRating(array){
+    gridContainer.replaceChildren();
+    array.sort((b, a) => b.rating.rate - a.rating.rate);
+    pagesContainer.replaceChildren();
+    update();
 }
 sort.addEventListener("change", () => {
 if(sort.value === "sort-price"){
     sortByPrice(myProductsArray);
-};
+}else if(sort.value === "sort-name"){
+    sortByName(myProductsArray);
+}else if(sort.value === "sort-rating"){
+    sortByRating(myProductsArray);
+}
 });
 
 addProductsToArray();
