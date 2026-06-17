@@ -17,8 +17,8 @@ async function addProductsToArray(){
     for (const product of data){
         myProductsArray.push(product);
     };
+    await update();
     sortByPrice(myProductsArray);
-    update();
 };
 // total quantity
 const totalQuantityP = document.querySelector("#totalQuantity");
