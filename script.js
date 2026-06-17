@@ -16,8 +16,8 @@ async function addProductsToArray(){
     const data = await getProducts();
     for (const product of data){
         myProductsArray.push(product);
-        renderProducts(product);
-    }
+    };
+    displayProducts();
 };
 // total quantity
 const totalQuantityP = document.querySelector("#totalQuantity");
@@ -144,10 +144,8 @@ exit.addEventListener("click", (e) => {
 });
 
 async function displayProducts(){
-    const data = await getProducts();
-    for (const product of data){
+    for (const product of myProductsArray){
         renderProducts(product);
     }
 };
 addProductsToArray();
-// displayProducts();
