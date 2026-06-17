@@ -1,5 +1,6 @@
 const myProductsArray = [];
 const cartArray = [];
+const categoryArray = []
 let totalQuantity = 0;
 let totalPrice = 0;
 
@@ -17,9 +18,24 @@ async function addProductsToArray(){
     for (const product of data){
         myProductsArray.push(product);
     };
+    // category
+    const categorySelector = document.querySelector("#categorySelector");
+    for(const product of myProductsArray){
+        if(!categoryArray.includes(product.category)){
+            categoryArray.push(product.category);
+        }
+    };
+    // add categories to the category box
+    for(const cat of categoryArray){
+        const categoryOption = document.createElement("option");
+        categoryOption.value = cat;
+        categoryOption.textContent = cat;
+        categorySelector.append(categoryOption);
+    };
     await update();
     sortByPrice(myProductsArray);
 };
+
 // total quantity
 const totalQuantityP = document.querySelector("#totalQuantity");
 totalQuantityP.textContent = `Total Quantity: ${totalQuantity}`;
@@ -204,5 +220,8 @@ if(sort.value === "sort-price"){
     sortByRating(myProductsArray);
 }
 });
+
+// filtering
+
 
 addProductsToArray();
