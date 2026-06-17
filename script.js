@@ -17,6 +17,7 @@ async function addProductsToArray(){
     for (const product of data){
         myProductsArray.push(product);
     };
+    sortByPrice(myProductsArray);
     update();
 };
 // total quantity
@@ -25,6 +26,7 @@ totalQuantityP.textContent = `Total Quantity: ${totalQuantity}`;
 // total price
 const totalPriceP = document.querySelector("#totalPrice");
 totalPriceP.textContent = `Total Price: $${totalPrice}`;
+const gridContainer = document.querySelector("#gridContainer");
 
 function renderProducts(data){
     const parentContainer = document.createElement("div");
@@ -59,7 +61,6 @@ function renderProducts(data){
     addToBtn.id = "addToBtn";
     addToBtn.textContent = "Add to Cart";
     
-    const gridContainer = document.querySelector("#gridContainer");
     
     buttonContainer.append(detailsBtn, addToBtn);
     childContainer.append(image, productName, productPrice, buttonContainer);
@@ -159,7 +160,7 @@ async function update(){
     if(numberOfPages > 1){
         for(let i = 1;i <= numberOfPages;i++){
             const pageButton = document.createElement("button");
-            pageButton.id = i;
+            pageButton.id = i;  
             pageButton.textContent = i;
             // ex 0 * 8 and 1 * 8 (), 1 * 8  and 2 * 8 
             tempArray = myProductsArray.slice((i - 1) * productsPerPage, i * productsPerPage);
@@ -174,5 +175,17 @@ async function update(){
         displayProducts(pageArray[0]);
     };
 };
+const sort = document.querySelector("#sort");
+function sortByPrice(array){
+    gridContainer.replaceChildren();
+    array.sort((b, a) => b.price - a.price);
+    pagesContainer.replaceChildren();
+    update();
+}
+sort.addEventListener("change", () => {
+if(sort.value === "sort-price"){
+    sortByPrice(myProductsArray);
+};
+});
 
 addProductsToArray();
