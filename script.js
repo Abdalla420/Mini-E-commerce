@@ -1,6 +1,7 @@
 const myProductsArray = [];
 const cartArray = [];
-const categoryArray = []
+const categoryArray = [];
+const filterArray = [];
 let totalQuantity = 0;
 let totalPrice = 0;
 
@@ -12,6 +13,7 @@ async function getProducts(){
         console.log("error");
     };
 };
+const categorySelector = document.querySelector("#categorySelector");
 
 async function addProductsToArray(){
     const data = await getProducts();
@@ -19,7 +21,6 @@ async function addProductsToArray(){
         myProductsArray.push(product);
     };
     // category
-    const categorySelector = document.querySelector("#categorySelector");
     for(const product of myProductsArray){
         if(!categoryArray.includes(product.category)){
             categoryArray.push(product.category);
@@ -222,6 +223,20 @@ if(sort.value === "sort-price"){
 });
 
 // filtering
-
+const search = document.querySelector("#text-box");
+const minPrice = document.querySelector("#min-price");
+const maxPrice = document.querySelector("#max-price");
+const applyFilters = document.querySelector("#filter-button");
+applyFilters.addEventListener("click", () => {
+    const filterArray = myProductsArray.filter(product => 
+        (search.value === "" || product.title.toLowerCase().includes(search.value.toLowerCase()))
+     && (categorySelector.value === "all-categories" || product.category === categorySelector.value)
+     && (minPrice.value === "" || Number(minPrice.value) <= product.price)
+     && (maxPrice.value === "" || Number(maxPrice.value) >= product.price)
+    );
+    gridContainer.replaceChildren();
+    pagesContainer.replaceChildren();
+    displayProducts(filterArray);
+});
 
 addProductsToArray();
