@@ -121,3 +121,9 @@ html, body {
     background-color: #FF0000;
     color: white;
 }
+#pagesContainer {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
