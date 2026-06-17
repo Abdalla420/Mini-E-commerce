@@ -9,7 +9,7 @@ async function getProducts(){
         return await response.json();
     }catch (error) {
         console.log("error");
-    }
+    };
 };
 
 async function addProductsToArray(){
@@ -17,7 +17,7 @@ async function addProductsToArray(){
     for (const product of data){
         myProductsArray.push(product);
     };
-    displayProducts();
+    update();
 };
 // total quantity
 const totalQuantityP = document.querySelector("#totalQuantity");
@@ -143,9 +143,36 @@ exit.addEventListener("click", (e) => {
     dialog.close();
 });
 
-async function displayProducts(){
-    for (const product of myProductsArray){
+async function displayProducts(array){
+    for (const product of array){
         renderProducts(product);
-    }
+    };
 };
+
+const pagesContainer = document.querySelector("#pagesContainer");
+
+async function update(){
+    let tempArray = [];
+    const pageArray = [];
+    const productsPerPage = 8;
+    let numberOfPages = Math.ceil(myProductsArray.length / productsPerPage);
+    if(numberOfPages > 1){
+        for(let i = 1;i <= numberOfPages;i++){
+            const pageButton = document.createElement("button");
+            pageButton.id = i;
+            pageButton.textContent = i;
+            // ex 0 * 8 and 1 * 8 (), 1 * 8  and 2 * 8 
+            tempArray = myProductsArray.slice((i - 1) * productsPerPage, i * productsPerPage);
+            pageArray.push(tempArray);
+            pageButton.addEventListener("click" ,() => {
+                // this empties the parent element
+                gridContainer.replaceChildren();
+                displayProducts(pageArray[i - 1]);
+            })
+            pagesContainer.append(pageButton);
+        };
+        displayProducts(pageArray[0]);
+    };
+};
+
 addProductsToArray();
