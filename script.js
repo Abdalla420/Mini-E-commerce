@@ -1,7 +1,7 @@
 const myProductsArray = [];
 const cartArray = [];
 const categoryArray = [];
-const filterArray = [];
+let currentArray = [];
 let totalQuantity = 0;
 let totalPrice = 0;
 
@@ -173,14 +173,14 @@ async function update(){
     let tempArray = [];
     const pageArray = [];
     const productsPerPage = 8;
-    let numberOfPages = Math.ceil(myProductsArray.length / productsPerPage);
+    let numberOfPages = Math.ceil(currentArray.length / productsPerPage);
     if(numberOfPages > 1){
         for(let i = 1;i <= numberOfPages;i++){
             const pageButton = document.createElement("button");
             pageButton.id = i;  
             pageButton.textContent = i;
             // ex 0 * 8 and 1 * 8 (), 1 * 8  and 2 * 8 
-            tempArray = myProductsArray.slice((i - 1) * productsPerPage, i * productsPerPage);
+            tempArray = currentArray.slice((i - 1) * productsPerPage, i * productsPerPage);
             pageArray.push(tempArray);
             pageButton.addEventListener("click" ,() => {
                 // this empties the parent element
@@ -190,35 +190,40 @@ async function update(){
             pagesContainer.append(pageButton);
         };
         displayProducts(pageArray[0]);
-    };
+    }else{
+        displayProducts(currentArray);
+    }
 };
 // sorting by price, name and ratings
 const sort = document.querySelector("#sort");
 function sortByPrice(array){
     gridContainer.replaceChildren();
     array.sort((b, a) => b.price - a.price);
+    currentArray = array;
     pagesContainer.replaceChildren();
     update();
 };
 function sortByName(array){
     gridContainer.replaceChildren();
     array.sort((a, b) => a.title.localeCompare(b.title));
+     currentArray = array;
     pagesContainer.replaceChildren();
     update();
 };
 function sortByRating(array){
     gridContainer.replaceChildren();
     array.sort((b, a) => b.rating.rate - a.rating.rate);
+    currentArray = array;
     pagesContainer.replaceChildren();
     update();
 }
 sort.addEventListener("change", () => {
 if(sort.value === "sort-price"){
-    sortByPrice(myProductsArray);
+    sortByPrice(currentArray);
 }else if(sort.value === "sort-name"){
-    sortByName(myProductsArray);
+    sortByName(currentArray);
 }else if(sort.value === "sort-rating"){
-    sortByRating(myProductsArray);
+    sortByRating(currentArray);
 }
 });
 
@@ -236,7 +241,8 @@ applyFilters.addEventListener("click", () => {
     );
     gridContainer.replaceChildren();
     pagesContainer.replaceChildren();
-    displayProducts(filterArray);
+    currentArray = filterArray;
+    update();
 });
 
 addProductsToArray();
