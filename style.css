@@ -104,6 +104,9 @@ html, body {
     /* justify-content: center; */
     max-width: 65vw;
     max-height: 85vh;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px gray;
 }
 #dialog:not([open]) {
     display: none;
